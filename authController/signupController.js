@@ -40,7 +40,7 @@ const checkSignup = async (req, res) => {
             res.status(500).send("Error sending email");
           } else {
             console.log("Email sent:", info.response);
-            res.send("otp re-sent successfully");
+            res.json({message:"otp re-sent successfully"});
           }
         });
       } catch (error) {
@@ -68,7 +68,7 @@ const checkSignup = async (req, res) => {
             res.status(500).send("Error sending email");
           } else {
             console.log("Email sent:", info.response);
-            res.send("Email sent successfully");
+            res.json({message:"Email sent successfully"});
             const newUserOtp = new Otp({ email: email, otp: otp });
             newUserOtp.save();
           }
