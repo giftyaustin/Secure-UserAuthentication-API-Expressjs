@@ -1,5 +1,10 @@
 This a stand alone user authentication API made using express. [Includes Json web tokens and password hashing]
 
+clone this repository to use the interface https://github.com/giftyaustin/userAuthentication-UI-react
+* start the app with {npm start}
+* You need to run the below server on port 5000 in order to successfully run the app.
+* currently only demo is linked with the server
+
 This app contains two options. 
 1. Demo registration
 2. secure registration (verification through otp). [To use this feature, you need a gmail account with two step verification completed.]
@@ -43,7 +48,7 @@ git clone https://github.com/giftyaustin/Secure-UserAuthentication-API-Expressjs
                 }
     * upon failure (json) {message: "user not found"}
 
-* To view dashboard [method = GET]
+* To view dashboard [method = POST]
 3. http://localhost:5000/demouser 
     The request body must contain these fields {accessToken, refreshToken}
 
@@ -65,4 +70,4 @@ will update secure login soon.
 
 
 3. to login [POST]  http://localhost:5000/auth/login . req.body = {email, password}
-4. to view dashboard [GET]  http://localhost:5000/user . req.body = {accessToken, refreshToken}
+4. to view dashboard [POST]  http://localhost:5000/user . req.body = {accessToken, refreshToken}
