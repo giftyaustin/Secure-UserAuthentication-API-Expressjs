@@ -13,6 +13,7 @@ const salt = Number(process.env.SALT_ROUNDS);
 const demoSignup = async (req, res)=>{
     const {email, fullName, password} = req.body;
     const tryingUser = await demoUser.find({email:email})
+   
     if(!tryingUser.length){
         const hash = await bcrypt.hash(password, salt);
         if (hash) {
@@ -48,6 +49,7 @@ const demoSignup = async (req, res)=>{
 const demoLogin = async (req, res)=>{
   const {email, password} = req.body;
   const tryingUser = await demoUser.find({email:email}) 
+  console.log(tryingUser)
   if(tryingUser){
       const response = await bcrypt.compare(password,tryingUser[0].password)
       if(response){
@@ -57,9 +59,12 @@ const demoLogin = async (req, res)=>{
           
           res.json({accessToken:accessToken, refreshToken: refreshToken, authorized:true})
       }
+      else{
+        res.status(400).json({message:"email or password incorrect", authorized:false})
+      }
   }
   else{
-      res.json({message: "user not found"})
+      res.status(400).json({message: "user not found", authorized:false})
   }
 }
 

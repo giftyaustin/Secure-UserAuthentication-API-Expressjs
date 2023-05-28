@@ -2,6 +2,6 @@ const express = require('express');
 const userRouter = express.Router();
 const {getDashboard} = require('../userController/userController.js')
 
-userRouter.get('/', getDashboard)
+userRouter.post('/', getDashboard)
 
 module.exports = {userRouter}

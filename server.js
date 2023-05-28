@@ -8,7 +8,7 @@ const {loginRouter} = require('./routers/authRouter');
 const {userRouter} = require('./routers/userRouter');
 const {demoUserRouter} = require('./routers/demoUserRouter');
 const {demoSignupRouter} = require('./routers/authRouter.js')
-corsOptions={ origin : "*" };
+corsOptions={ origin : "http://localhost:3000" };
 
 
 
